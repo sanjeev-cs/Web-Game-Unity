@@ -36,7 +36,7 @@ namespace Platformer397
                     Move?.Invoke(context.ReadValue<Vector2>());
                     break;
                 default:
-                    Debug.Log("No input handled");
+                    //Debug.Log("No input handled");
                     break;
             }
 
