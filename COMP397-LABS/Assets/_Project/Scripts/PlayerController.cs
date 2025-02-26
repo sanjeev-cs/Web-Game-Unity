@@ -3,7 +3,7 @@ using UnityEngine;
 namespace Platformer397
 {
     [RequireComponent(typeof(Rigidbody))] // helps avoid issues with null references
-    public class PlayerController : MonoBehaviour
+    public class PlayerController : Subject
     {
 
         [SerializeField] private InputReader input;
@@ -26,6 +26,7 @@ namespace Platformer397
         {
             //Debug.Log("[Start]");
             input.EnablePlayerActions();
+            NotifyObservers();
         }
 
         private void OnEnable()
@@ -60,17 +61,18 @@ namespace Platformer397
                 rb.linearVelocity = new Vector3(0f, rb.linearVelocity.y, 0f);
             }
         }
+
         private void HandleMovement(Vector3 adjustedDirection)
         {
             var velocity = adjustedDirection * moveSpeed * Time.fixedDeltaTime;
             rb.linearVelocity = new Vector3(velocity.x, rb.linearVelocity.y, velocity.z);
         }
+
         private void HandleRotation(Vector3 adjustedDirection)
         {
             var targetRotation = Quaternion.LookRotation(adjustedDirection);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, roationSpeed * Time.deltaTime);
         }
-
 
         private void GetMovement(Vector2 move)
         {
