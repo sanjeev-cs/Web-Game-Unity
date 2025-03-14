@@ -10,7 +10,7 @@ namespace Platformer397
         [SerializeField] private Button loadBtn;
         [SerializeField] private Button optionsBtn;
         [SerializeField] private Button quitBtn;
-        
+
         private void Start()
         {
             playBtn.onClick.AddListener(() => SceneController.Instance.ChangeScene("Gameplay"));
