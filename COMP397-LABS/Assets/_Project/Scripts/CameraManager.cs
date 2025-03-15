@@ -1,5 +1,5 @@
-using UnityEngine;
 using Unity.Cinemachine;
+using UnityEngine;
 
 namespace Platformer397
 {
@@ -12,9 +12,9 @@ namespace Platformer397
         // In Awake, lock the mouse into the game view in unity and make the cursor invisible
         private void Awake()
         {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-            if (player != null) { return; }
+            // Cursor.lockState = CursorLockMode.Locked;
+            // Cursor.visible = false;
+            if (player != null) return;
             player = GameObject.FindWithTag("Player").transform;
         }
 
